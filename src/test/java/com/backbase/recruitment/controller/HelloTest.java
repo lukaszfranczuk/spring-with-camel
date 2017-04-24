@@ -35,6 +35,7 @@ public class HelloTest {
 
     @Test
     public void shouldReturnHelloBackbase() throws Exception {
+        
         //given
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/hello");
         ResultMatcher body = MockMvcResultMatchers.content().string("HELLO BACKBASE");
