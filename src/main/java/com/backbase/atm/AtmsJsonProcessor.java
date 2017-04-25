@@ -17,10 +17,10 @@ public class AtmsJsonProcessor implements Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {
-        setNewExchangeBodyAsFormattedJson(exchange);
+        setExchangeOutputAsFormattedJson(exchange);
     }
 
-    private void setNewExchangeBodyAsFormattedJson(Exchange exchange) throws IOException {
+    private void setExchangeOutputAsFormattedJson(Exchange exchange) throws IOException {
         Message message = exchange.getIn();
         exchange.setOut(setNewMessageBodyAsFormattedJson(message));
     }
