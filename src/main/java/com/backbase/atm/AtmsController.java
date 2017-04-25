@@ -1,6 +1,6 @@
-package com.backbase.recruitment.controller;
+package com.backbase.atm;
 
-import com.backbase.recruitment.model.RouteHeader;
+import com.backbase.atm.model.RouteHeader;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +20,14 @@ public class AtmsController {
 
 
     @RequestMapping(path = "/atms", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> getAtmsFromExternalService(@RequestParam(name = "city", required = true) String cityName) {
-        Map<String, Object> headers = createRequestHeaders(cityName);
+    public ResponseEntity<String> getAtmsFromExternalService(@RequestParam(name = "city", required = true) String cityName) {
+        Map<String, Object> requestCamelMessageHeaders = createMessageCityNameHeader(cityName);
         String externalServiceResponse = template.requestBodyAndHeaders(
-                template.getDefaultEndpoint(), null, headers, String.class);
+                template.getDefaultEndpoint(), null, requestCamelMessageHeaders, String.class);
         return ResponseEntity.ok(externalServiceResponse);
     }
 
-    private Map<String, Object> createRequestHeaders(String cityName) {
+    private Map<String, Object> createMessageCityNameHeader(String cityName) {
         Map<String, Object> headers = new HashMap<>();
         headers.put(RouteHeader.CITY_NAME.getName(), cityName);
         return headers;

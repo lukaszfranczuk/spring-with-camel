@@ -1,7 +1,6 @@
-package com.backbase.recruitment.route;
+package com.backbase.atm;
 
-import com.backbase.recruitment.model.RouteHeader;
-import com.backbase.recruitment.processor.AtmsProcessor;
+import com.backbase.atm.model.RouteHeader;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.utils.URIBuilder;
@@ -23,9 +22,13 @@ public class AtmsRoute extends SpringRouteBuilder {
 
     @Override
     public void configure() throws Exception {
+        getFormattedJsonFromExternalService();
+    }
+
+    private void getFormattedJsonFromExternalService() {
         from("direct:atms")
                 .to("restlet:" + buildUrl(RouteHeader.CITY_NAME.getRouteRepresentation()))
-                .process(new AtmsProcessor());
+                .process(new AtmsJsonProcessor());
     }
 
     private String buildUrl(String cityName) {
@@ -35,11 +38,12 @@ public class AtmsRoute extends SpringRouteBuilder {
         uriBuilder.setHost(HOST);
         uriBuilder.setPort(PORT);
         uriBuilder.setPath(path);
-        String url = null;
+        String url;
         try {
             url = uriBuilder.build().toString();
         } catch (URISyntaxException e) {
             logger.error("Error while building request URL", e);
+            throw new IllegalArgumentException(e);
         }
         return url;
     }
