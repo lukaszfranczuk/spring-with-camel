@@ -32,8 +32,7 @@ public class AtmsJsonProcessor implements Processor {
     }
 
     private String createNewMessageBodyAsFormattedJson(String messageBody) throws IOException {
-        String atmLocations = formatJson(messageBody);
-        return atmLocations;
+        return formatJson(messageBody);
     }
 
     private String formatJson(String messageBody) throws IOException {
@@ -46,6 +45,9 @@ public class AtmsJsonProcessor implements Processor {
     }
 
     private String removeCorruptedJsonBeginning(String body) {
-        return body.replace(CORRUPTED_JSON_BEGINNING, StringUtils.EMPTY);
+        if(body.startsWith(CORRUPTED_JSON_BEGINNING)) {
+            return body.replace(CORRUPTED_JSON_BEGINNING, StringUtils.EMPTY);
+        }
+        return body;
     }
 }

@@ -1,5 +1,7 @@
 package com.backbase.atm.model;
 
+import java.text.MessageFormat;
+
 public enum RouteHeader {
     CITY_NAME("cityName");
 
@@ -16,6 +18,6 @@ public enum RouteHeader {
     }
 
     public String getRouteRepresentation() {
-        return LEFT_CURLY_BRACKET + name + RIGHT_CURLY_BRACKET;
+        return MessageFormat.format("'{'{0}'}'", name);
     }
 }

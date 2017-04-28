@@ -23,6 +23,7 @@
         <commons-lang3.version>3.0</commons-lang3.version>
         <log4j.version>1.2.17</log4j.version>
         <jackson.version>2.8.7</jackson.version>
+        <jetty-maven-plugin.version>9.4.4.v20170414</jetty-maven-plugin.version>
     </properties>
 
     <build>
@@ -35,6 +36,16 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty-maven-plugin.version}</version>
+                <configuration>
+                    <webApp>
+                        <contextPath>/recruitment</contextPath>
+                    </webApp>
                 </configuration>
             </plugin>
         </plugins>
