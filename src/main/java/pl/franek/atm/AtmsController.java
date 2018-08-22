@@ -1,4 +1,4 @@
-package com.backbase.atm;
+package pl.franek.atm;
 
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;

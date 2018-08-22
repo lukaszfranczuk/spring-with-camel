@@ -1,4 +1,4 @@
-package com.backbase.atm.model;
+package pl.franek.atm.model;
 
 import java.text.MessageFormat;
 

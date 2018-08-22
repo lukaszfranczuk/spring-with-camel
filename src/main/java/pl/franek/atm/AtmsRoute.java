@@ -1,6 +1,6 @@
-package com.backbase.atm;
+package pl.franek.atm;
 
-import com.backbase.atm.model.RouteHeader;
+import pl.franek.atm.model.RouteHeader;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.utils.URIBuilder;

@@ -1,4 +1,4 @@
-package com.backbase.configuration;
+package pl.franek.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -16,7 +16,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     public Class<?>[] getServletConfigClasses() {
-        return null;
+        return new Class<?>[10];
     }
 
 }

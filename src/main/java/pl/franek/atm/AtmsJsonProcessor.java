@@ -1,6 +1,6 @@
-package com.backbase.atm;
+package pl.franek.atm;
 
-import com.backbase.atm.model.AtmLocation;
+import pl.franek.atm.model.AtmLocation;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.camel.Exchange;
